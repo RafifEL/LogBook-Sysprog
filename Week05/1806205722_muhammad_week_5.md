@@ -1,8 +1,8 @@
 ## Memory and Process
 
 ### Process
-Berikut bagian-bagian dari proses, yaitu:
-
+Berikut bagian-bagian dari proses, yaitu:  
+![process_memory_layout](memoryLayoutC.jpg)
  1. Text (Program code)  
     Bagian dari process memory yang menyimpan instruksi eksekusi program yang akan dijalankan process
 
@@ -79,7 +79,8 @@ sbrk() adalah system call yang meng-increment address dari akhir dari suatu pros
 #### Library Call
 1. Malloc()  
 malloc adalah library call yang digunakan untuk mengalokasi memory sesuai dengan parameter size yang dimasukkan ke dalam fungsi malloc(). malloc akan bekerja mencari free block list yang sesuai dengan parameter sizenya di dalam heap. Apabila heap tidak cukup, malloc akan mengimplementasikan system call sbrk() untuk menambah ukuran heap (menambah address program break). malloc akan mengembalikan pointer ke allocate memory apabila berhasil dan NULL apabila gagal.
-	 - Malloc menjaga konsistensi free block list dengan menjaga konsistensi next pointer dan previous pointer pada free block list
+	 - Malloc menjaga konsistensi free block list dengan menjaga konsistensi next pointer dan previous pointer pada free block list  
+	   ![free](free.png)
 
 2. Free()
 Free adalah library call yang mengembalikan allocated memory kembali kedalam free block list. free menerima parameter pointer address allocated memory. Pemanggilan free tidak menjamin mengurangi address program break karena bisa saja memory yang dialokasikan berada di tengah heap.
@@ -89,4 +90,4 @@ Free adalah library call yang mengembalikan allocated memory kembali kedalam fre
     
 		-   Menurunkan penggunaan system call sbrk() untuk meningkatkan performa (pemanggilan banyak system call menyebabkan banyak melakukan switch processor mode (kernel dan user))
     
--   Di beberapa program yang mengalokasikan memory yang besar cenderung menahan memory yang sudah dialokasikan atau secara berulang melepaskan dan mengalokasikan kembali memory dibanding melepaskannya secara langsung dan lanjut menjalankan tugasnya
+		-   Di beberapa program yang mengalokasikan memory yang besar cenderung menahan memory yang sudah dialokasikan atau secara berulang melepaskan dan mengalokasikan kembali memory dibanding melepaskannya secara langsung dan lanjut menjalankan tugasnya
