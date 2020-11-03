@@ -120,4 +120,4 @@ COMMAND_1 >> FILE_PATH ## Mengappend file dengan output COMMAND_1
 
 COMMAND_1 < FILE_PATH ## menjadikan file menjadi input ke command
 ```
-
+Source : https://linuxconfig.org/bash-scripting-tutorial
